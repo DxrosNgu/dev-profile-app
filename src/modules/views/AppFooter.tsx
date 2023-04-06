@@ -9,10 +9,7 @@ import TextField from '../components/TextField';
 function Copyright() {
   return (
     <React.Fragment>
-      {'© '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      {'© '}{'Developer Page '}
       {new Date().getFullYear()}
     </React.Fragment>
   );
@@ -46,7 +43,7 @@ export default function AppFooter() {
               direction="column"
               justifyContent="flex-end"
               spacing={2}
-              sx={{ height: 60 }}
+              sx={{ height: 30 }}
             >
               <Grid item>
                 <Copyright />
