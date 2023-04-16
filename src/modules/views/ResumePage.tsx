@@ -13,8 +13,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { ButtonBase, Card, CardActions, CardContent, Grid } from "@mui/material";
+import { ButtonBase, Grid } from "@mui/material";
 import Paper from '@mui/material/Paper';
+import GridResume from "../components/GridResume";
+import Resume from "@/models/Resume";
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -26,6 +28,28 @@ const Img = styled('img')({
   maxWidth: '100%',
   maxHeight: '100%',
 });
+
+const ResumeList: Resume[] = [{
+  id: 1,
+  company: "Company 1",
+  jobName: "Employment type 2",
+  dateStart: new Date(2022, 4, 1),
+  dateFinish: new Date(2022, 12, 1),
+  detailJob: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor leo, semper sit amet massa nec, bibendum viverra lectus. Quisque tortor lacus, convallis sit amet euismod non, viverra ut urna. Etiam a tempus turpis. In est augue, ullamcorper vitae quam at, viverra semper odio. Vivamus eget mauris elementum, convallis nibh nec, posuere eros. Quisque in mauris nisl. Aliquam ut sollicitudin eros. Morbi varius sodales mauris in luctus. Nulla rutrum at felis in pharetra. Nam vitae rutrum mi, at rutrum tortor. In pharetra blandit molestie" +
+  "Fusce consequat ipsum ac nulla viverra, a sagittis ligula consequat. Donec volutpat lacus lectus, ut tristique libero ultricies a. Sed vulputate elementum metus, condimentum vehicula justo suscipit in. Nullam maximus lacus a erat ultricies, a lacinia cras.",
+  skills: "Object-Oriented Programming (OOP)"
+},
+{
+  id: 2,
+  company: "Company 2",
+  jobName: "Employment type 2",
+  dateStart: new Date(2022, 4, 1),
+  dateFinish: new Date(2022, 4, 1),
+  detailJob: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor leo, semper sit amet massa nec, bibendum viverra lectus. Quisque tortor lacus, convallis sit amet euismod non, viverra ut urna. Etiam a tempus turpis. In est augue, ullamcorper vitae quam at, viverra semper odio. Vivamus eget mauris elementum, convallis nibh nec, posuere eros. Quisque in mauris nisl. Aliquam ut sollicitudin eros. Morbi varius sodales mauris in luctus. Nulla rutrum at felis in pharetra. Nam vitae rutrum mi, at rutrum tortor. In pharetra blandit molestie" +
+  "Fusce consequat ipsum ac nulla viverra, a sagittis ligula consequat. Donec volutpat lacus lectus, ut tristique libero ultricies a. Sed vulputate elementum metus, condimentum vehicula justo suscipit in. Nullam maximus lacus a erat ultricies, a lacinia cras.",
+  skills: "Object-Oriented Programming (OOP)"
+}];
+
 
 function ResumePage() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -62,6 +86,7 @@ function ResumePage() {
         •
       </Box>
     );
+
     return (
       <React.Fragment>
         <Container maxWidth={false}>
@@ -232,33 +257,16 @@ function ResumePage() {
               theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
           }}
         >
-          <Grid container spacing={1}>
-   
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={1}>
-                <Grid item xs>
+          <Grid container spacing={2}>
+          <Grid item xs={12}  container>
                   <Typography gutterBottom variant="subtitle1" component="div">
                    Title
                   </Typography>
-                  <Typography gutterBottom variant="subtitle1" component="div">
-                   Company - Employment type
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Jul-2022 - Present - 10 mos
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Lima, Lima, Peru
-                  </Typography>
-                  <Typography variant="body2" gutterBottom>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor leo, semper sit amet massa nec, bibendum viverra lectus. Quisque tortor lacus, convallis sit amet euismod non, viverra ut urna. Etiam a tempus turpis. In est augue, ullamcorper vitae quam at, viverra semper odio. Vivamus eget mauris elementum, convallis nibh nec, posuere eros. Quisque in mauris nisl. Aliquam ut sollicitudin eros. Morbi varius sodales mauris in luctus. Nulla rutrum at felis in pharetra. Nam vitae rutrum mi, at rutrum tortor. In pharetra blandit molestie.
-                        Fusce consequat ipsum ac nulla viverra, a sagittis ligula consequat. Donec volutpat lacus lectus, ut tristique libero ultricies a. Sed vulputate elementum metus, condimentum vehicula justo suscipit in. Nullam maximus lacus a erat ultricies, a lacinia cras.
-                  </Typography>
-                  <Typography variant="body2" gutterBottom>
-                    Skills: Object-Oriented Programming (OOP)
-                  </Typography>
-                </Grid>
-              </Grid>
             </Grid>
+            {ResumeList.map((item) => (
+              <GridResume key={item.id} />
+            ))}
+           
           </Grid>
         </Paper>
         </div>
